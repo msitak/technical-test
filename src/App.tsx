@@ -4,6 +4,7 @@ import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
 // @ts-ignore
 import styles from './index.css';
 import Filter from './Components/Filter/Filter';
+import { LiftStatus, Maybe } from './__generated__/graphql';
 
 const __DEV__ = process.env.NODE_ENV !== 'production';
 
@@ -14,7 +15,7 @@ if (__DEV__) {
 }
 
 export default function App() {
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState<Maybe<LiftStatus>>(null);
 
   return (
     <div className="bg-sky-50 min-h-screen pt-4" style={styles}>

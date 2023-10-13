@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { LiftStatus, Maybe } from '../../__generated__/graphql';
 
-const Filter: React.FC<{ setStatus: Dispatch<SetStateAction<null>> }> = ({
-  setStatus,
-}) => {
-  const handleSelectChange = (event: any) => {
+const Filter: React.FC<{
+  setStatus: Dispatch<SetStateAction<Maybe<LiftStatus>>>;
+}> = ({ setStatus }) => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    setStatus(value === 'null' ? null : value);
+    setStatus(value === 'null' ? null : (value as LiftStatus));
   };
 
   return (
